@@ -1,6 +1,7 @@
 package com.example.mycredman
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -204,6 +205,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // https://developer.android.com/training/sign-in/credential-provider#handle-passkey-credential
+    @SuppressLint("RestrictedApi")
     private fun createPasskey(
         requestJson: String,
         callingAppInfo: androidx.credentials.provider.CallingAppInfo?,
@@ -350,6 +352,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // https://developer.android.com/training/sign-in/credential-provider#passkeys-implement
+    @SuppressLint("RestrictedApi")
     fun validatePasskey(requestJson:String, origin:String, packageName:String, uid:ByteArray, username:String, credId:ByteArray, privateKey: ECPrivateKey, clientDataHash: ByteArray?){
         val request = PublicKeyCredentialRequestOptions(requestJson)
 

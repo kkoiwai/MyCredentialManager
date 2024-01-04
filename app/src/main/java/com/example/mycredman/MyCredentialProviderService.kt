@@ -1,5 +1,6 @@
 package com.example.mycredman
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
@@ -184,6 +185,7 @@ class MyCredentialProviderService: androidx.credentials.provider.CredentialProvi
         return BeginGetCredentialResponse(credentialEntries)
     }
 
+    @SuppressLint("RestrictedApi")
     private fun populatePasskeyData(
         callingAppInfo: CallingAppInfo,
         option: BeginGetPublicKeyCredentialOption

@@ -1,5 +1,6 @@
 package com.example.mycredman
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -76,6 +77,7 @@ class GetCredentialActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("RestrictedApi")
     fun validatePasskey(requestJson:String, origin:String, packageName:String, uid:ByteArray, username:String, credId:ByteArray, privateKeyBytes:ByteArray){
         val request = PublicKeyCredentialRequestOptions(requestJson)
         val privateKey: ECPrivateKey = convertPrivateKey(privateKeyBytes)
@@ -96,6 +98,7 @@ class GetCredentialActivity : AppCompatActivity() {
                 finish()
             }
 
+            @SuppressLint("RestrictedApi")
             override fun onAuthenticationSucceeded(
                 result: BiometricPrompt.AuthenticationResult
             ) {
