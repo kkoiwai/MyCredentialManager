@@ -1,6 +1,7 @@
 package com.example.mycredman
 
 import android.content.Intent
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.credentials.provider.PendingIntentHandler
 import androidx.credentials.webauthn.AuthenticatorAssertionResponse
 import androidx.credentials.webauthn.FidoPublicKeyCredential
 import androidx.credentials.webauthn.PublicKeyCredentialRequestOptions
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import java.math.BigInteger
@@ -25,6 +27,7 @@ import java.security.spec.ECParameterSpec
 import java.security.spec.ECPrivateKeySpec
 
 
+@SuppressLint("RestrictedApi")
 class GetCredentialActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -162,6 +165,7 @@ class GetCredentialActivity : AppCompatActivity() {
 
 
 
+@OptIn(InternalSerializationApi::class)
 @Serializable
 data class GetPublicKeyCredentialRequestJson(
     val allowCredentials:Array<AllowCredential>? = null,
@@ -170,6 +174,7 @@ data class GetPublicKeyCredentialRequestJson(
     val userVerification: String,
     val timeout: Int? = null
 ) {
+    @OptIn(InternalSerializationApi::class)
     @Serializable
     data class AllowCredential(
         val id: String,

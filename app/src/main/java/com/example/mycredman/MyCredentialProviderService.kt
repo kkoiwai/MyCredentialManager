@@ -1,5 +1,6 @@
 package com.example.mycredman
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
@@ -25,6 +26,7 @@ import androidx.credentials.webauthn.PublicKeyCredentialRequestOptions
 
 
 
+@SuppressLint("RestrictedApi")
 class MyCredentialProviderService: androidx.credentials.provider.CredentialProviderService() {
 
     private val CREATE_PASSKEY_INTENT = "com.example.mycredman.action.CREATE_PASSKEY"

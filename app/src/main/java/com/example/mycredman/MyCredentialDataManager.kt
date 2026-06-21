@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -122,6 +123,7 @@ object MyCredentialDataManager {
         val displayName:String = "",
         val keyPair:KeyPair? = null
     )
+    @OptIn(InternalSerializationApi::class)
     @Serializable
     data class CredSet(
         var list:MutableList<SerializedCred> = mutableListOf()

@@ -1,6 +1,7 @@
 package com.example.mycredman
 
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -41,6 +42,7 @@ import androidx.credentials.webauthn.FidoPublicKeyCredential
 import androidx.credentials.webauthn.PublicKeyCredentialCreationOptions
 import androidx.credentials.webauthn.PublicKeyCredentialRequestOptions
 import com.example.mycredman.ui.theme.MyCredManTheme
+import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -55,6 +57,7 @@ import java.security.interfaces.ECPublicKey
 import java.security.spec.ECGenParameterSpec
 import java.security.spec.ECPoint
 
+@SuppressLint("RestrictedApi")
 class MainActivity : AppCompatActivity() {
 
     private val EXTRA_KEY_ACCOUNT_ID  = "com.example.mycredman.extra.EXTRA_KEY_ACCOUNT_ID"
@@ -449,6 +452,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @OptIn(InternalSerializationApi::class)
     @Serializable
     private data class CreatePublicKeyCredentialResponseJson(
         //RegistrationResponseJSON
